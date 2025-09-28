@@ -18,12 +18,6 @@ mkdir eth-balance-drop-trap
 cd eth-balance-drop-trap
 forge init . --no-git
 ```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Foundry initialization output]
-```
-
 ### 1.2 Install Dependencies
 ```bash
 # Install OpenZeppelin contracts
@@ -32,12 +26,6 @@ forge install OpenZeppelin/openzeppelin-contracts --no-commit
 # Verify installation
 ls lib/
 ```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: lib directory showing openzeppelin-contracts]
-```
-
 ### 1.3 Configure Foundry
 Create `foundry.toml` configuration:
 ```bash
@@ -84,23 +72,12 @@ Create `script/DeployETHBalanceTrap.s.sol` and `script/SimpleTest.s.sol`
 ```bash
 forge build
 ```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Successful compilation with any warning notes]
-```
-
 ## 🏗️ Phase 3: Contract Deployment
 
 ### 3.1 Deploy Main Contracts
 ```bash
 # Deploy trap and logger contracts
 forge script script/DeployETHBalanceTrap.s.sol:DeployETHBalanceTrap --rpc-url hoodi --broadcast
-```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Deployment success showing both contract addresses and current wallet balance]
 ```
 
 **Record Contract Addresses:**
@@ -114,11 +91,6 @@ forge script script/DeployETHBalanceTrap.s.sol:DeployETHBalanceTrap --rpc-url ho
 forge script script/SimpleTest.s.sol:SimpleTest --rpc-url hoodi --broadcast
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: SimpleTrapViewer deployment with provided testing commands]
-```
-
 **Record Viewer Address:** `_____________________`
 
 ## 🧪 Phase 4: Functionality Testing
@@ -129,44 +101,22 @@ forge script script/SimpleTest.s.sol:SimpleTest --rpc-url hoodi --broadcast
 cast call --rpc-url hoodi VIEWER_ADDRESS "getTrapStats()"
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Initial trap status before any alerts]
-```
-
 ### 4.2 Test Balance Collection
 ```bash
 # Test the collect() function
 cast call --rpc-url hoodi TRAP_ADDRESS "collect()(uint256)"
 ```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Current balance in wei and formatted display]
-```
-
 ### 4.3 Test Alert Count
 ```bash
 # Check wallet-specific alert count
 cast call --rpc-url hoodi VIEWER_ADDRESS \
   "getWalletAlertCount(address)" YOUR_WALLET_ADDRESS
 ```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Initial alert count (should be 0)]
-```
-
 ### 4.4 Test Trap Logic
 ```bash
 # Test shouldRespond with mock data (15% drop scenario)
 cast call --rpc-url hoodi TRAP_ADDRESS \
   "shouldRespond(uint256[])" "[10000000000000000000,8500000000000000000]"
-```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: shouldRespond returning true for 15% drop test]
 ```
 
 ## 🚨 Phase 5: Alert System Testing
@@ -183,20 +133,10 @@ cast send --rpc-url hoodi --private-key $PRIVATE_KEY \
   "Testing - 15% Balance Drop Alert"
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Transaction success with hash and gas usage]
-```
-
 ### 5.2 Verify Alert Logging
 ```bash
 # Check updated trap statistics
 cast call --rpc-url hoodi VIEWER_ADDRESS "getTrapStats()"
-```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Updated status showing "ACTIVE - ALERTS DETECTED"]
 ```
 
 ### 5.3 Check Alert Count
@@ -206,20 +146,10 @@ cast call --rpc-url hoodi VIEWER_ADDRESS \
   "getWalletAlertCount(address)" YOUR_WALLET_ADDRESS
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Alert count increased to 1]
-```
-
 ### 5.4 View Alert Events
 ```bash
 # Check blockchain events
 cast logs --rpc-url hoodi --address LOGGER_ADDRESS --from-block latest
-```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: ETHDropAlert event with decoded data]
 ```
 
 ## ⚡ Phase 6: Real Transaction Testing
@@ -240,11 +170,6 @@ cast send --rpc-url hoodi --private-key $PRIVATE_KEY \
   --value 2ether
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Transaction confirmation with hash and gas cost]
-```
-
 ### 6.3 Verify Balance Change
 ```bash
 # Check new balance
@@ -256,11 +181,6 @@ cast call --rpc-url hoodi TRAP_ADDRESS "collect()(uint256)"
 
 **Balance After Test:** `_____________________`
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: New balance showing the decrease from ETH transfer]
-```
-
 ### 6.4 Test with Real Data
 ```bash
 # Test shouldRespond with actual before/after balances
@@ -268,10 +188,6 @@ cast call --rpc-url hoodi TRAP_ADDRESS \
   "shouldRespond(uint256[])" "[BEFORE_BALANCE,AFTER_BALANCE]"
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: shouldRespond result with actual balance data]
-```
 
 ## 📊 Phase 7: Monitoring Verification
 
@@ -280,12 +196,7 @@ cast call --rpc-url hoodi TRAP_ADDRESS \
 # Check final trap statistics
 cast call --rpc-url hoodi VIEWER_ADDRESS "getTrapStats()"
 ```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Final trap status with all tests completed]
-```
-
+]
 ### 7.2 Complete Alert History
 ```bash
 # Get total alerts for monitored wallet
@@ -293,21 +204,11 @@ cast call --rpc-url hoodi VIEWER_ADDRESS \
   "getWalletAlertCount(address)" YOUR_WALLET_ADDRESS
 ```
 
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Total alert count after all tests]
-```
-
 ### 7.3 Balance Formatting Test
 ```bash
 # Test balance formatting utility
 cast call --rpc-url hoodi VIEWER_ADDRESS \
   "getBalanceStrings(uint256)" CURRENT_BALANCE_WEI
-```
-
-**Expected Output:**
-```
-[INSERT SCREENSHOT: Formatted balance in both ETH and wei]
 ```
 
 ## 📋 Phase 8: Configuration Setup

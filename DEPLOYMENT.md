@@ -291,13 +291,6 @@ git remote add origin https://github.com/yourusername/eth-balance-drop-trap.git
 git push -u origin main
 ```
 
-### 10.3 Drosera Submission Preparation
-Prepare for submission to Drosera examples repository:
-- [ ] Fork [Drosera examples repo](https://github.com/drosera-network/examples)
-- [ ] Prepare pull request with your trap
-- [ ] Include all test results and documentation
-- [ ] Provide clear deployment and usage instructions
-
 ## 📊 Test Results Summary
 
 ### Deployment Summary

@@ -1,0 +1,10 @@
+{
+  "transactions": [
+    {
+      "rpc": "https://ethereum-hoodi-rpc.publicnode.com"
+    },
+    {
+      "rpc": "https://ethereum-hoodi-rpc.publicnode.com"
+    }
+  ]
+}

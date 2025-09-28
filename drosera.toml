@@ -1,0 +1,35 @@
+# Drosera Configuration for ETH Balance Drop Trap  
+# This monitors a wallet's native ETH balance and alerts on significant drops
+# Perfect for HOODI testnet!
+
+# Network configuration (using Hoodi testnet)
+ethereum_rpc = "https://ethereum-hoodi-rpc.publicnode.com"
+drosera_rpc = "https://relay.hoodi.drosera.io"
+eth_chain_id = 560048
+drosera_address = "0x91cB447BaFc6e0EA0F4Fe056F5a9b1F14bb06e5D"
+
+[traps]
+
+[traps.eth_balance_monitor]
+# Path to your compiled contract
+path = "out/ETHBalanceDropTrap.sol/ETHBalanceDropTrap.json"
+
+# Response contract - deployed and ready!
+response_contract = "0x12a8fD9771C11caF7B66fBc6054C12BC544096D2"
+response_function = "logETHDropAlert(address,uint256,uint256,string)"
+
+# Trap operation settings
+cooldown_period_blocks = 10      # Wait 10 blocks between triggers
+min_number_of_operators = 1      # Minimum operators to validate
+max_number_of_operators = 3      # Maximum operators to use
+block_sample_size = 5           # Keep 5 blocks of history
+private_trap = false            # Make it public for testing
+whitelist = []                  # No whitelist needed for public trap
+
+# Your deployed trap contract address
+address = "0x8E9E6ba7285d31a2404bEaeb6215A4bc9383B74C"
+
+# Deployment info for reference:
+# Monitored wallet: 0x1B4dE8009d6D17CaB4B955f0d51D35B4AABd47fb
+# Drop threshold: 1000 (10%)
+# Min balance: 0.01 ETH

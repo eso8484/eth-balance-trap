@@ -68,9 +68,8 @@ cast call --rpc-url hoodi 0x8E9E6ba7285d31a2404bEaeb6215A4bc9383B74C "collect()(
 ```
 
 **Result:**
-```
-[INSERT SCREENSHOT: Current balance in wei and ETH format]
-```
+
+![Alert Detected](./output_screenshot/Balance-monitoring.png)
 
 #### Alert Detection Test
 **Scenario:** Balance dropped from 10.498 ETH to 4.493 ETH (57% drop)
@@ -82,47 +81,9 @@ cast call --rpc-url hoodi 0x8E9E6ba7285d31a2404bEaeb6215A4bc9383B74C \
 ```
 
 **Result:**
-```
-[INSERT SCREENSHOT: shouldRespond returning true for 57% drop detection]
-```
 
-#### Alert Logging Test
-**Command:**
-```bash
-cast call --rpc-url hoodi 0x48E33741e1a7D6FEc2987259f3083f90Bb2E81eb \
-  "getWalletAlertCount(address)" 0x1B4dE8009d6D17CaB4B955f0d51D35B4AABd47fb
-```
+![Alert Detected](./output_screenshot/logic-test.png)
 
-**Result:**
-```
-[INSERT SCREENSHOT: Number of alerts logged for the monitored wallet]
-```
-
-#### Manual Alert Trigger Test
-**Command:**
-```bash
-cast send --rpc-url hoodi --private-key $PRIVATE_KEY \
-  0x12a8fD9771C11caF7B66fBc6054C12BC544096D2 \
-  "logETHDropAlert(address,uint256,uint256,string)" \
-  0x1B4dE8009d6D17CaB4B955f0d51D35B4AABd47fb \
-  10498100449392994458 4493426303055288071 \
-  "Live Test - 57% Balance Drop Detected!"
-```
-
-**Transaction Result:**
-```
-[INSERT SCREENSHOT: Successful transaction hash and gas usage]
-```
-
-**Event Verification:**
-```bash
-cast logs --rpc-url hoodi --address 0x12a8fD9771C11caF7B66fBc6054C12BC544096D2 --from-block latest
-```
-
-**Result:**
-```
-[INSERT SCREENSHOT: ETHDropAlert event with decoded data showing wallet, balances, and drop percentage]
-```
 
 ## ⚙️ Configuration
 

@@ -57,9 +57,9 @@ cast call --rpc-url hoodi 0x48E33741e1a7D6FEc2987259f3083f90Bb2E81eb "getTrapSta
 ```
 
 **Result:**
-```
+
 ![Alert Detected](./output_screenshot/Screenshot From 2025-09-28 14-04-05.png)
-```
+
 
 #### Balance Monitoring Test
 **Command:**
